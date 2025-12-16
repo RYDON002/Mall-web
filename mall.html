@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mega Mall — Demo</title>
+  <link rel="stylesheet" href="mall.css">
+</head>
+
+<body>
+  <div id="auth-root" class="auth-root">
+    <div class="container" id="container">
+      <div class="form-container sign-up-container">
+        <form id="signupForm" autocomplete="off">
+          <h1>Create Account</h1>
+          <input id="signup-name" name="name" type="text" placeholder="Full name" required />
+          <input id="signup-email" name="email" type="email" placeholder="Email" required />
+          <input id="signup-password" name="password" type="password" placeholder="Password" required />
+          <button type="submit" class="btn primary" id="signupSubmit">Sign Up</button>
+          <p class="small">By signing up you accept our <span id="privacyLink" class="link">Privacy Policy</span>.</p>
+        </form>
+      </div>
+
+      <div class="form-container sign-in-container">
+        <form id="loginForm" autocomplete="off">
+          <h1>Sign In</h1>
+          <input id="login-email" name="email" type="email" placeholder="Email" required />
+          <input id="login-password" name="password" type="password" placeholder="Password" required />
+          <button type="submit" class="btn primary" id="loginSubmit">Sign In</button>
+          <p class="small">Admin? Use <span class="muted">rydonn@admin.com / rydonn@1234</span></p>
+        </form>
+      </div>
+
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back</h1>
+            <p>If you already have an account, sign in here.</p>
+            <button class="btn ghost" id="signIn">Sign In</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Hello, Friend</h1>
+            <p>Enter your details to start shopping.</p>
+            <button class="btn ghost" id="signUp">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-root" class="hidden">
+    <header class="topbar">
+      <div class="left">
+        <button id="hamburger" class="hamburger" aria-label="open menu">☰</button>
+        <div class="brand">Mega Mall</div>
+      </div>
+
+      <nav class="topnav" id="topnav">
+        <button data-page="home" class="nav-btn active">Home</button>
+        <button data-page="houses" class="nav-btn">Houses</button>
+        <button data-page="room" class="nav-btn">Room</button>
+        <button data-page="parlor" class="nav-btn">Parlor</button>
+        <button data-page="kitchen" class="nav-btn">Kitchen</button>
+        <button data-page="clothes" class="nav-btn">Clothes</button>
+        <button data-page="devices" class="nav-btn">Devices</button>
+      </nav>
+
+      <div class="right-actions">
+        <button id="adminPanelBtn" class="btn secondary" style="display:none">Admin</button>
+        <button id="logoutBtn" class="btn ghost">Logout</button>
+      </div>
+    </header>
+
+    <aside id="sidebar" class="sidebar hidden" aria-hidden="true">
+      <button id="closeSidebar" class="close" aria-label="close sidebar">✕</button>
+      <ul class="side-list">
+        <li><a href="#" data-sidebar="houses" class="side-link">Houses</a></li>
+        <li><a href="#" data-sidebar="home" class="side-link">Home</a></li>
+        <li><a href="#" data-sidebar="room" class="side-link">Room</a></li>
+        <li><a href="#" data-sidebar="parlor" class="side-link">Parlor</a></li>
+        <li><a href="#" data-sidebar="kitchen" class="side-link">Kitchen</a></li>
+        <li><a href="#" data-sidebar="clothes" class="side-link">Clothes</a></li>
+        <li><a href="#" data-sidebar="devices" class="side-link">Devices</a></li>
+        <li><a href="#" data-sidebar="about" class="side-link">About Us</a></li>
+        <li><a href="#" data-sidebar="contact" class="side-link">Contact Us</a></li>
+        <li><a href="#" data-sidebar="privacy" class="side-link">Privacy Policy</a></li>
+
+      </ul>
+    </aside>
+
+    <main class="main-wrap">
+      <section id="page-houses" class="page">
+        <h2>Houses</h2>
+        <div id="grid-houses" class="grid"></div>
+      </section>
+
+      <section id="page-home" class="page active">
+        <div class="hero">
+          <div class="hero-text">
+            <h1>Welcome to GNS Mall</h1>
+            <p>Curated products for home, kitchen, fashion and tech.</p>
+            <div class="cta-row">
+              <button class="btn primary" data-go="devices">Shop Devices</button>
+              <button class="btn" data-go="room">Explore Room</button>
+            </div>
+          </div>
+          <img src="Home.images/home1.jpg" alt="mall hero"
+            onerror="this.src='https://source.unsplash.com/featured/?shopping,store&sig=99'" />
+        </div>
+      </section>
+
+      <section id="page-room" class="page">
+        <h2>Room Materials</h2>
+        <div id="grid-room" class="grid"></div>
+      </section>
+
+      <section id="page-parlor" class="page">
+        <h2>Parlor Materials</h2>
+        <div id="grid-parlor" class="grid"></div>
+      </section>
+
+      <section id="page-kitchen" class="page">
+        <h2>Kitchen Materials</h2>
+        <div id="grid-kitchen" class="grid"></div>
+      </section>
+
+      <section id="page-clothes" class="page">
+        <h2>Clothes</h2>
+        <div id="grid-clothes" class="grid"></div>
+      </section>
+
+      <section id="page-devices" class="page">
+        <h2>Devices (Laptops & Electronics)</h2>
+        <div id="grid-devices" class="grid"></div>
+      </section>
+
+      <section id="page-about" class="page">
+        <h2>About Us</h2>
+        <p>We curate quality home, fashion and tech products sourced for demonstration purposes. This demo is built to
+          show a full-stack system (frontend + admin) for your portfolio.</p>
+      </section>
+
+      <section id="page-contact" class="page">
+        <h2>Contact Us</h2>
+        <p>Email: hello@megamall.example</p>
+        <p>Phone: +234 800 000 0000</p>
+      </section>
+
+      <section id="page-privacy" class="page">
+        <h2>Privacy Policy</h2>
+        <p>This demo does not store payment info. Images load from local folders if present; otherwise Unsplash fallback
+          is used. For production, integrate real storage and payment gateway.</p>
+      </section>
+
+      <section id="page-admin-login" class="page">
+        <h2>Admin Login</h2>
+        <div class="admin-login-center">
+          <form id="adminLoginForm" class="admin-login-form" autocomplete="off">
+            <input name="email" id="admin-email" type="email" placeholder="Admin email" required />
+            <input name="password" id="admin-password" type="password" placeholder="Password" required />
+            <button class="btn primary" id="adminLoginBtn" type="submit">Login as Admin</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="page-admin-dashboard" class="page">
+        <h2>Admin Dashboard</h2>
+        <div class="admin-grid">
+          <form id="adminAddForm" class="admin-form" autocomplete="off">
+            <input name="name" id="prod-name" placeholder="Product name" required />
+            <input name="price" id="prod-price" placeholder="Price (e.g. 1200)" required />
+            <input name="image" id="prod-image" placeholder="Image path or URL" />
+            <select id="prod-category">
+              <option value="houses">Houses</option>
+              <option value="room">Room</option>
+              <option value="parlor">Parlor</option>
+              <option value="kitchen">Kitchen</option>
+              <option value="clothes">Clothes</option>
+              <option value="devices">Devices</option>
+            </select>
+            <button class="btn primary" type="submit">Add Product</button>
+          </form>
+          <div id="adminProdList" class="admin-list"></div>
+        </div>
+      </section>
+
+      <footer class="footer">© Mega Mall — demo</footer>
+    </main>
+  </div>
+
+  <div id="buyModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close" id="closeBuyModal">✕</button>
+      <h3 id="orderTitle">Order</h3>
+      <form id="orderForm" autocomplete="off">
+        <div class="form-row"><label>Name</label><input name="name" id="order-name" required /></div>
+        <div class="form-row"><label>Phone</label><input name="phone" id="order-phone" required /></div>
+        <div class="form-row"><label>Address</label><input name="address" id="order-address" required /></div>
+        <div class="form-row"><label>Payment</label>
+          <select id="order-payment">
+            <option value="card">Card</option>
+            <option value="cash">Cash on delivery</option>
+          </select>
+        </div>
+        <div class="form-row"><label>Delivery Location</label><input id="order-location" placeholder="City / Town"
+            required /></div>
+        <div class="form-row"><label>Item</label>
+          <div id="order-item"></div>
+        </div>
+        <div class="form-actions"><button class="btn primary" type="submit">Place Order</button></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="mall.js"></script>
+</body>
+
+</html>
