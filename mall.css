@@ -101,6 +101,18 @@ body {
   pointer-events: auto;
 }
 
+.restLink{
+  text-decoration: none;
+  color: #2563eb;
+  text-align: right;
+  margin-top: -34px;
+}
+
+.restLink:hover{
+  text-decoration: underline;
+  font-size: 17px;
+}
+
 .form-container form {
   display: flex;
   flex-direction: column;
@@ -647,7 +659,3 @@ body {
     opacity: 1 !important;
   }
 }
-
-
-
-/* ...existing code... */
