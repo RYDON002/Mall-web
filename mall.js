@@ -103,7 +103,7 @@ function renderGrid(cat) {
 
     const buy = document.createElement('button');
     buy.className = 'buy';
-    buy.textContent = 'Buy';
+    buy.textContent = 'Add to cart';
     buy.onclick = () => openBuyModal(p);
 
     info.append(name, price, buy);
@@ -256,6 +256,7 @@ adminAddForm?.addEventListener('submit', e => {
   adminAddForm.reset();
 });
 
+
 function refreshAdminList() {
   adminProdList.innerHTML = '';
 
@@ -297,4 +298,3 @@ closeBuyModal.onclick = () => buyModal.classList.add('hidden');
 loadProducts();
 renderAllGrids();
 refreshAdminList();
-
