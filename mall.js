@@ -54,6 +54,54 @@ let products = {
   devices: []
 };
 
+/* =======================
+   LOAD 10 10 PRODUCTS AS DEFOULT
+======================= */
+
+function loadDefaultProducts() {
+  if (localStorage.getItem(STORAGE_KEY)) return;
+
+  const defaults = {
+    houses: "House.image/home",
+    room: "Room.image/room",
+    parlor: "Parlor.image/parlor",
+    kitchen: "Kitchen.image/kitchen",
+    devices: "Device.image/device"
+  };
+
+  Object.entries(defaults).forEach(([cat, path]) => {
+    for (let i = 1; i <= 10; i++) {
+      products[cat].push({
+        id: `${cat}${i}`,
+        name: `${cat.toUpperCase()} ${i}`,
+        price: 100 + i * 20,
+        src: `${path}${i}.jpg`
+      });
+    }
+  });
+
+  [1,4,5,6,7,8,9,10].forEach((n, i) => {
+    products.clothes.push({
+      id: `c${i}`,
+      name: `Cloth ${i + 1}`,
+      price: 40 + i * 5,
+      src: `Cloth.image/cloth${n}.jpg`
+    });
+  });
+
+  [1,2,3,5,6,7,8,9,10,24].forEach((n, i) => {
+    products.parlor.push({
+      id: `p${i}`,
+      name: `Parlor ${i + 1}`,
+      price: 150 + i * 10,
+      src: `Parlor.image/parlor${n}.jpg`
+    });
+  });
+
+  saveProducts();
+}
+
+
 const STORAGE_KEY = 'megamall_products';
 
 /* =======================
@@ -292,9 +340,8 @@ function openBuyModal(p) {
 
 closeBuyModal.onclick = () => buyModal.classList.add('hidden');
 
-/* =======================
-   INIT
-======================= */
+
+loadDefaultProducts();
 loadProducts();
 renderAllGrids();
 refreshAdminList();
